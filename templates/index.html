@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>Upcoming Events</h1>
+   
+
+    <form action="/events" method = "post">
+        <label for="name">Event Name</label>
+        <input type="text" name = "name" id="name">
+        <label for="date">Date</label>
+        <input type="date" name = "date" id="date">
+        <label for="guests">Number of guests</label>
+        <input type="number" name = "guests" id="guests">
+        <label for="location">Location</label>
+        <input type="text" name = "location" id="location"> 
+        <label for="description">Description</label>
+        <textarea name = "description" id="description" rows="3" cols="30"></textarea>
+        <input type="submit" value="Add Event">
+
+        
+
+    </form>
+    {% for event in event_list %}
+    <p>
+        Event:{{event.name}}<br>
+        When: {{event.date.strftime("%b %d %Y")}} <br>
+
+
+    </p>
+    {% endfor %}
+    {% endblock %}
